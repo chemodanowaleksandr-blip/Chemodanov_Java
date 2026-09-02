@@ -1,0 +1,26 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Скачиваем код из репозитория на виртуальную машину
+    - uses: actions/checkout@v4
+
+    # 2. Устанавливаем и настраиваем окружение Java 11
+    - name: Set up JDK 11
+      uses: actions/checkout@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+
+    # 3. Компилируем Java-код, чтобы проверить его на ошибки
+    - name: Compile Java Code
+      run: javac Main.java
